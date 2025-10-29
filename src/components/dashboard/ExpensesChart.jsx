@@ -18,7 +18,7 @@ const ExpensesChart = ({ ticker }) => {
 
   useEffect(() => {
     axios
-      .get(`http://54.210.247.12:5000/cash_income_combined/${ticker}`, {
+      .get(`/backend-2/cash_income_combined/${ticker}`, {
         params: {
           period: "FY",
           limit: 10,

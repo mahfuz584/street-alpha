@@ -33,7 +33,7 @@ const ChatBox = ({ name }) => {
     setChatHistory((prev) => [...prev, typingMessage]);
 
     try {
-      const response = await axios.post("http://54.210.247.12:5000/qa", {
+      const response = await axios.post("/backend-2/qa", {
         message,
         thread_id: threadId,
         user_id: userId.toString(),

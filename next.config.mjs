@@ -20,6 +20,11 @@ const nextConfig = {
         destination: `${process.env.NEXT_PUBLIC_API_URL}/:path*`,
         locale: false,
       },
+      {
+        source: "/backend-2/:path*",
+        destination: `http://54.210.247.12:5000/:path*`,
+        locale: false,
+      },
     ];
   },
 };
