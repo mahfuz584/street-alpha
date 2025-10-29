@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 const CompanyList = ({
   handleFollow,
@@ -13,9 +13,20 @@ const CompanyList = ({
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const wishListUrl = searchParams.get("followed");
-
+  
   const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState("");
 
+  const filteredTickers = useMemo(() => {
+  if (!searchQuery.trim()) return displayedTickers;
+  
+  const query = searchQuery.toLowerCase();
+  return displayedTickers.filter((ticker) =>
+    ticker.companyName?.toLowerCase().includes(query) ||
+    ticker.symbol?.toLowerCase().includes(query)
+  );
+}, [searchQuery, displayedTickers]);
+  
   const handleClick = useCallback(() => {
     if (matchedSymbols.length >= 5) {
       window.location.href = "/dashboard";
@@ -46,13 +57,13 @@ const CompanyList = ({
           )}
         </div>
         <label className="bg-[#fff] border-[0.25px] border-[#d3d3d3] rounded-[4px] input w-full max-w-[238px] shadow-none  ">
-          <input
-            type="search"
-            required
-            placeholder="Search"
-            className="placeholder-[#555555] placeholder:text-[12px] leading-[1.5] tracking-normal xl:tracking-[-0.24px]"
-          />
-
+        <input
+         type="search"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+        placeholder="Search"
+        className="placeholder-[#555555] placeholder:text-[12px] leading-[1.5] tracking-normal xl:tracking-[-0.24px] w-full px-[10px] py-[8px] outline-none border-0"
+        />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="10"
@@ -68,7 +79,7 @@ const CompanyList = ({
         </label>
       </div>
       <div className="w-full grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-[13px]">
-        {displayedTickers?.map((ticker, index) => {
+        {filteredTickers?.map((ticker, index) => {
           const { companyName, image } = ticker;
 
           return (

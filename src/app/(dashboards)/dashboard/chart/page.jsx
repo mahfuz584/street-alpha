@@ -10,7 +10,7 @@ import CustomRadialChart from "@/components/dashboard/CustomRadialChart";
 import ExpensesChart from "@/components/dashboard/ExpensesChart";
 
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const Chart = () => {
   const { matchedSymbols } = useFollowingData();
@@ -52,6 +52,8 @@ const Chart = () => {
     image: item.data?.image || "https://via.placeholder.com/100",
   }));
   const isLoading = !initialLoadDone && isDataFetching;
+
+  console.log("simplifiedData", simplifiedData);
 
   if (isLoading) {
     return (

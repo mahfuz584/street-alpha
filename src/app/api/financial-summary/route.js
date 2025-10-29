@@ -21,7 +21,7 @@ export async function GET(req) {
     if (!data || !data.fundamentals) {
       return new Response(
         JSON.stringify({
-          symbol: ticker,
+          symbol: ticker && ticker,
           latestDate: null,
           fundamentals: {},
           ratios: {},

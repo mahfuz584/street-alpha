@@ -1,10 +1,9 @@
 "use client";
 import { useFollowingData } from "@/app/hooks/useFollowing";
-import { tableData } from "@/pageData/tableData";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const PAGE_SIZE = 20;
@@ -14,11 +13,10 @@ const Wishlist = () => {
   const user = session?.user;
   const { matchedSymbols, setMatchedSymbols } = useFollowingData();
   const [wishList, setWishList] = useState([]);
+  console.log("🚀 ~ Wishlist ~ wishList:", wishList)
   const [isLoading, setIsLoading] = useState(true);
   const totalPages = Math.ceil(matchedSymbols.length / PAGE_SIZE);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
-
-  // console.log("symbols", matchedSymbols);
 
   const start = pageIndex * PAGE_SIZE;
   const end = start + PAGE_SIZE;

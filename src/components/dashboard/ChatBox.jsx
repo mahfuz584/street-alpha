@@ -1,16 +1,20 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useEffect, useRef, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 
 const ChatBox = ({ name }) => {
+  const session = useSession();
   const [message, setMessage] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  console.log("🚀 ~ ChatBox ~ chatHistory:", chatHistory)
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
 
-  // scroll to bottom whenever chatHistory changes
+  const userId = session?.data?.user?.id;
+
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatHistory, loading]);
@@ -18,27 +22,34 @@ const ChatBox = ({ name }) => {
   const handleSubmit = async () => {
     if (!message.trim()) return;
 
-    const userMessage = { type: "user", text: message };
+    const threadId = Date.now().toString();
+    const userMessage = { type: "user", text: message, isTyping: false };
+
     setChatHistory((prev) => [...prev, userMessage]);
     setLoading(true);
     setMessage("");
 
-    // add a temporary "typing..." placeholder for AI
     const typingMessage = { type: "ai", text: "Thinking...", isTyping: true };
     setChatHistory((prev) => [...prev, typingMessage]);
 
     try {
-      const response = await axios.post("/api/chat_ai", {
+      const response = await axios.post("http://54.210.247.12:5000/qa", {
         message,
+        thread_id: threadId,
+        user_id: userId.toString(),
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
+ 
       const answer = response?.data?.answer || "No answer returned.";
-
       setChatHistory((prev) => [
-        ...prev.slice(0, -1), // remove placeholder
+        ...prev.slice(0, -1),
         { type: "ai", text: answer, isTyping: false },
       ]);
     } catch (err) {
-      console.log("Chat request failed:", err);
+      console.error("Chat request failed:", err);
       setChatHistory((prev) => [
         ...prev.slice(0, -1),
         { type: "ai", text: "Failed to get response.", isTyping: false },
@@ -52,8 +63,7 @@ const ChatBox = ({ name }) => {
     <>
       <div className="pb-[30px] space-y-3">
         {chatHistory?.map((chat, index) => {
-          const isLatestAI =
-            chat.type === "ai" && index === chatHistory.length - 1;
+          const isLatestAI = chat.type === "ai" && index === chatHistory.length - 1;
 
           return (
             <div
@@ -62,7 +72,6 @@ const ChatBox = ({ name }) => {
                 chat?.type === "user" ? "justify-end" : "justify-start"
               }`}
             >
-              {/* AI avatar */}
               {chat?.type === "ai" && (
                 <div className="w-[30px] h-[30px]">
                   <img
@@ -73,7 +82,6 @@ const ChatBox = ({ name }) => {
                 </div>
               )}
 
-              {/* Message bubble */}
               <div
                 className={`p-3 rounded-2xl max-w-[80%] text-[14px] ${
                   chat?.type === "user"
@@ -105,7 +113,6 @@ const ChatBox = ({ name }) => {
                 )}
               </div>
 
-              {/* User avatar */}
               {chat?.type === "user" && (
                 <div className="w-[30px] h-[30px] rounded-full overflow-hidden">
                   <img
@@ -121,7 +128,6 @@ const ChatBox = ({ name }) => {
         <div ref={chatEndRef} />
       </div>
 
-      {/* Input field */}
       <div className="w-full max-w-[1080px] bg-white mx-auto pb-[20px] fixed bottom-0 z-10">
         <div className="flex items-center border border-gray-200 rounded-lg px-[18px] py-[17px]">
           <input

@@ -1,15 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import {
-  BarChart,
   Bar,
-  XAxis,
-  YAxis,
+  BarChart,
   CartesianGrid,
-  Tooltip,
   Legend,
   ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 
 const ExpensesChart = ({ ticker }) => {
@@ -18,7 +18,12 @@ const ExpensesChart = ({ ticker }) => {
 
   useEffect(() => {
     axios
-      .get("/api/expenses_chart", ticker)
+      .get(`http://54.210.247.12:5000/cash_income_combined/${ticker}`, {
+        params: {
+          period: "FY",
+          limit: 10,
+        },
+      })
       .then((res) => {
         setData(res.data?.data || []);
       })

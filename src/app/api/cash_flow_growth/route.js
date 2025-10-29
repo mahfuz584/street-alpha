@@ -22,7 +22,6 @@ export async function POST(req) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    // Check if error response exists and matches the "data not found" message
     if (
       error.response &&
       error.response.status === 500 &&
@@ -32,7 +31,6 @@ export async function POST(req) {
         "404: Cash flow growth data not found"
       )
     ) {
-      // Return an empty data array instead of error
       return new Response(
         JSON.stringify({
           symbol: ticker,

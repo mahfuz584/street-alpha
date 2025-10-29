@@ -7,7 +7,6 @@ import { use, useState } from "react";
 const ForYouNews = ({ followings, newsForYouPromise }) => {
   const newsForYou = use(newsForYouPromise);
   const initialData = newsForYou?.data;
-  console.log("🚀 ~ ForYouNews ~ initialData:", initialData);
 
   if (
     !followings ||
