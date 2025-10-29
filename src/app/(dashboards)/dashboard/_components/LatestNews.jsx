@@ -1,11 +1,10 @@
 "use client";
 
 import axios from "axios";
-import { use, useState } from "react";
+import { useState } from "react";
 import NewsCard from "../../../../components/dashboard/NewsCard";
 
-const LatestNews = ({ newsPromise }) => {
-  const initialData = use(newsPromise);
+const LatestNews = ({ latestNews:initialData }) => {
   const [allNewsData, setAllNewsData] = useState(initialData.data);
   const [loading, setLoading] = useState(false);
   const [currentOffset, setCurrentOffset] = useState(initialData.data.length);

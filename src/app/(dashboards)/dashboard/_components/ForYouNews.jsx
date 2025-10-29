@@ -2,10 +2,9 @@
 
 import NewsCard from "@/components/dashboard/NewsCard";
 import axios from "axios";
-import { use, useState } from "react";
+import { useState } from "react";
 
-const ForYouNews = ({ followings, newsForYouPromise }) => {
-  const newsForYou = use(newsForYouPromise);
+const ForYouNews = ({ followings, newsForYou }) => {
   const initialData = newsForYou?.data;
 
   if (

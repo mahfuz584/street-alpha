@@ -2,10 +2,10 @@ import TabContent from "../../../../components/dashboard/TabContent";
 
 const UserDashboard = ({
   user,
+  newsForYou,
+  news,
+  summary,
   followings,
-  newsPromise,
-  summaryPromise,
-  newsForYouPromise,
 }) => {
   const { name } = user;
 
@@ -15,10 +15,11 @@ const UserDashboard = ({
         Welcome {name || "Vini "}
       </h1>
       <TabContent
+        user={user}
+        news={news}
+        summary={summary}
         followings={followings}
-        newsPromise={newsPromise}
-        summaryPromise={summaryPromise}
-        newsForYouPromise={newsForYouPromise}
+        newsForYou={newsForYou}
       />
     </>
   );

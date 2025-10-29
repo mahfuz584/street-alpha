@@ -6,17 +6,20 @@ import { fetchGet } from "./utils";
 const DashboardWrapper = async () => {
   const { user } = await getServerSession(authOptions);
 
-  if (!user) return <div>Please log in to view your dashboard.</div>;
+  if (!user) return <p>Please log in to view your dashboard.</p>;
 
-  const { data: tickers } = await fetchGet(
-    "/followings",
-    {},
-    user.accessToken,
-    "https://streetalpha.codixel.tech/api",
-    0
-  );
 
-  const newsForYouPromise = fetchGet(
+const { data: tickers } = await fetchGet(
+  "/followings",
+  {},
+  user.accessToken,
+  "https://streetalpha.codixel.tech/api",
+  0
+);
+
+
+const [newsForYouResult, newsResult, summaryResult] = await Promise.allSettled([
+  fetchGet(
     "/news_by_symbols",
     {
       tickers: tickers?.data?.map((t) => t.symbol),
@@ -24,17 +27,38 @@ const DashboardWrapper = async () => {
       offset: 0,
     },
     0
-  );
-  const newsPromise = fetchGet("/news");
-  const summaryPromise = fetchGet("/summary/SPY/1D");
+  ),
+  fetchGet("/news"),
+  fetchGet("/summary/SPY/1D"),
+]);
+
+
+const newsForYou = newsForYouResult.status === 'fulfilled' && newsForYouResult.value ;
+const news = newsResult.status === 'fulfilled' && newsResult.value;
+const summary = summaryResult.status === 'fulfilled' && summaryResult.value;
+
+
+if (newsForYouResult.status === 'rejected') {
+  console.error('News for you fetch failed:', newsForYouResult.reason);
+}
+if (newsResult.status === 'rejected') {
+  console.error('News fetch failed:', newsResult.reason);
+}
+if (summaryResult.status === 'rejected') {
+  console.error('Summary fetch failed:', summaryResult.reason);
+}
+
+if(!newsForYou || !news || !summary) {
+  return <p>Failed to load dashboard data. Please try again later.</p>;
+}
 
   return (
     <UserDashboard
       user={user}
-      newsPromise={newsPromise}
-      summaryPromise={summaryPromise}
+      news={news}
+      summary={summary}
+      newsForYou={newsForYou}
       followings={tickers?.data || []}
-      newsForYouPromise={newsForYouPromise}
     />
   );
 };
