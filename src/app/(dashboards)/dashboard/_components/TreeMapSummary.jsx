@@ -516,7 +516,7 @@ const getColorFromChange = useCallback((change) => {
       <div
         ref={canvasContainerRef}
         className="relative border border-gray-300 rounded-lg overflow-hidden"
-        style={{ height: `${canvasSize.height}px` }}
+        style={{height: `${canvasSize.height}px`}}
       >
         <canvas ref={canvasRef} className="w-full h-full bg-[#f8f9fa] block" />
         {!hasDrawn && (

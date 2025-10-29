@@ -13,6 +13,7 @@ const TabContent = ({
   summaryPromise,
 }) => {
   const [activeTab, setActiveTab] = useState("summary");
+  console.log("🚀 ~ TabContent ~ activeTab:", activeTab)
 
   return (
     <>
