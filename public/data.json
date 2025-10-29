@@ -1,0 +1,501 @@
+{
+  "name": "Market",
+  "children": [
+    {
+      "name": "TECHNOLOGY",
+      "children": [
+        {
+          "name": "SOFTWARE - INFRASTRUCTURE",
+          "color": "#3d5a50",
+          "children": [
+            {
+              "name": "AAPL",
+              "value": 1500,
+              "change": -2,
+              "url": "https://example.com/aapl"
+            },
+            {
+              "name": "MSFT",
+              "value": 1200,
+              "change": 8.8,
+              "url": "https://example.com/msft"
+            },
+            {
+              "name": "GOOGL",
+              "value": 800,
+              "change": 1.3,
+              "url": "https://example.com/googl"
+            },
+            {
+              "name": "AAPL",
+              "value": 1500,
+              "change": -11.5,
+              "url": "https://example.com/aapl"
+            },
+            {
+              "name": "MSFT",
+              "value": 1200,
+              "change": -1.1,
+              "url": "https://example.com/msft"
+            },
+            {
+              "name": "GOOGL",
+              "value": 800,
+              "change": 11.3,
+              "url": "https://example.com/googl"
+            },
+            {
+              "name": "AAPL",
+              "value": 1500,
+              "change": -10.2,
+              "url": "https://example.com/aapl"
+            },
+            {
+              "name": "MSFT",
+              "value": 1200,
+              "change": 0,
+              "url": "https://example.com/msft"
+            },
+            {
+              "name": "GOOGL",
+              "value": 800,
+              "change": -6.6,
+              "url": "https://example.com/googl"
+            }
+          ]
+        },
+        {
+          "name": "CONSUMER ELECTRONICS",
+          "color": "#6f4551",
+          "children": [
+            {
+              "name": "TSLA",
+              "value": 1500,
+              "change": 0.4,
+              "url": "https://example.com/aapl"
+            },
+            {
+              "name": "AMZN",
+              "value": 1200,
+              "change": -10.7,
+              "url": "https://example.com/msft"
+            },
+            {
+              "name": "META",
+              "value": 800,
+              "change": 8.8,
+              "url": "https://example.com/googl"
+            },
+            {
+              "name": "TSLA",
+              "value": 1500,
+              "change": 9.8,
+              "url": "https://example.com/aapl"
+            },
+            {
+              "name": "AMZN",
+              "value": 1200,
+              "change": 9.3,
+              "url": "https://example.com/msft"
+            },
+            {
+              "name": "META",
+              "value": 800,
+              "change": -3.4,
+              "url": "https://example.com/googl"
+            },
+            {
+              "name": "TSLA",
+              "value": 1500,
+              "change": -10.3,
+              "url": "https://example.com/aapl"
+            },
+            {
+              "name": "AMZN",
+              "value": 1200,
+              "change": -7.4,
+              "url": "https://example.com/msft"
+            },
+            {
+              "name": "META",
+              "value": 800,
+              "change": 7.8,
+              "url": "https://example.com/googl"
+            }
+          ]
+        },
+        {
+          "name": "SEMICONDUCTORS",
+          "color": "#794551",
+          "children": [
+            {
+              "name": "NVDA",
+              "value": 1500,
+              "change": -8.4,
+              "url": "https://example.com/aapl"
+            },
+            {
+              "name": "AMD",
+              "value": 1200,
+              "change": 4,
+              "url": "https://example.com/msft"
+            },
+            {
+              "name": "INTC",
+              "value": 800,
+              "change": 6.4,
+              "url": "https://example.com/googl"
+            },
+            {
+              "name": "NVDA",
+              "value": 1500,
+              "change": 4,
+              "url": "https://example.com/aapl"
+            },
+            {
+              "name": "AMD",
+              "value": 1200,
+              "change": -0.4,
+              "url": "https://example.com/msft"
+            },
+            {
+              "name": "INTC",
+              "value": 800,
+              "change": 2,
+              "url": "https://example.com/googl"
+            },
+            {
+              "name": "NVDA",
+              "value": 1500,
+              "change": -9.2,
+              "url": "https://example.com/aapl"
+            },
+            {
+              "name": "AMD",
+              "value": 1200,
+              "change": 8,
+              "url": "https://example.com/msft"
+            },
+            {
+              "name": "INTC",
+              "value": 800,
+              "change": 1.3,
+              "url": "https://example.com/googl"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HEALTHCARE",
+      "children": [
+        {
+          "name": "DRUG MANUFACTURER",
+          "color": "#6f4551",
+          "children": [
+            {
+              "name": "JNJ",
+              "value": 1000,
+              "change": 1.8,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "PFE",
+              "value": 500,
+              "change": -9.8,
+              "url": "https://example.com/pfe"
+            },
+            {
+              "name": "JNJ",
+              "value": 1000,
+              "change": 4.5,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "JNJ",
+              "value": 1000,
+              "change": -8,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "PFE",
+              "value": 500,
+              "change": -5,
+              "url": "https://example.com/pfe"
+            },
+            {
+              "name": "JNJ",
+              "value": 1000,
+              "change": 3.2,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "PFE",
+              "value": 500,
+              "change": -5,
+              "url": "https://example.com/pfe"
+            }
+          ]
+        },
+        {
+          "name": "BIOTECH",
+          "color": "#794551",
+          "children": [
+            {
+              "name": "ABT",
+              "value": 1000,
+              "change": 7.3,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "REGN",
+              "value": 500,
+              "change": -8.9,
+              "url": "https://example.com/pfe"
+            },
+            {
+              "name": "ABT2",
+              "value": 1000,
+              "change": 3.7,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "ABT3",
+              "value": 1000,
+              "change": 1.7,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "REGN",
+              "value": 500,
+              "change": 4,
+              "url": "https://example.com/pfe"
+            },
+            {
+              "name": "ABT4",
+              "value": 1000,
+              "change": 5,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "REGN",
+              "value": 500,
+              "change": -3.6,
+              "url": "https://example.com/pfe"
+            }
+          ]
+        },
+        {
+          "name": "MEDICAL DEVICES",
+          "color": "#3d5a50",
+          "children": [
+            {
+              "name": "MRK",
+              "value": 1000,
+              "change": 9.2,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "BMY",
+              "value": 500,
+              "change": 5.9,
+              "url": "https://example.com/pfe"
+            },
+            {
+              "name": "MRK",
+              "value": 1000,
+              "change": 3.9,
+              "url": "https://example.com/jnj"
+            },
+            {
+              "name": "BMY",
+              "value": 500,
+              "change": 10.8,
+              "url": "https://example.com/pfe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FINANCIAL",
+      "children": [
+        {
+          "name": "CREDIT SERVICES",
+          "color": "#794551",
+          "children": [
+            {
+              "name": "JPM",
+              "value": 1100,
+              "change": -10.8,
+              "url": "https://example.com/jpm"
+            },
+            {
+              "name": "BAC",
+              "value": 700,
+              "change": -8.7,
+              "url": "https://example.com/bac"
+            },
+            {
+              "name": "JPM",
+              "value": 1100,
+              "change": 3.4,
+              "url": "https://example.com/jpm"
+            },
+            {
+              "name": "JPM",
+              "value": 1100,
+              "change": 6.4,
+              "url": "https://example.com/jpm"
+            },
+            {
+              "name": "BAC",
+              "value": 700,
+              "change": 0.5,
+              "url": "https://example.com/bac"
+            },
+            {
+              "name": "JPM",
+              "value": 1100,
+              "change": 9.1,
+              "url": "https://example.com/jpm"
+            },
+            {
+              "name": "BAC",
+              "value": 700,
+              "change": -4.7,
+              "url": "https://example.com/bac"
+            }
+          ]
+        },
+        {
+          "name": "INSURANCE",
+          "color": "#3d5a50",
+          "children": [
+            {
+              "name": "AIG",
+              "value": 1100,
+              "change": -3.6,
+              "url": "https://example.com/jpm"
+            },
+            {
+              "name": "TRV",
+              "value": 700,
+              "change": -12,
+              "url": "https://example.com/bac"
+            },
+            {
+              "name": "AIG",
+              "value": 1100,
+              "change": -5.6,
+              "url": "https://example.com/jpm"
+            },
+            {
+              "name": "TRV",
+              "value": 700,
+              "change": -2.7,
+              "url": "https://example.com/bac"
+            }
+          ]
+        },
+        {
+          "name": "BANKING",
+          "children": [
+            {
+              "name": "WFC",
+              "value": 1100,
+              "change": -4.3,
+              "url": "https://example.com/jpm"
+            },
+            {
+              "name": "BAC",
+              "value": 700,
+              "change": -10.9,
+              "url": "https://example.com/bac"
+            },
+            {
+              "name": "WFC",
+              "value": 1100,
+              "change": -9.6,
+              "url": "https://example.com/jpm"
+            },
+            {
+              "name": "BAC",
+              "value": 700,
+              "change": 6.5,
+              "url": "https://example.com/bac"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ENERGY",
+      "children": [
+        {
+          "name": "OIL AND GAS",
+          "children": [
+            {
+              "name": "XOM",
+              "value": 1100,
+              "change": 4.5,
+              "url": "https://example.com/xom"
+            },
+            {
+              "name": "CVX",
+              "value": 700,
+              "change": -6.1,
+              "url": "https://example.com/cvx"
+            },
+            {
+              "name": "XOM",
+              "value": 1100,
+              "change": 3.8,
+              "url": "https://example.com/xom"
+            },
+            {
+              "name": "CVX",
+              "value": 700,
+              "change": -5.2,
+              "url": "https://example.com/cvx"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REAL ESTATE",
+      "children": [
+        {
+          "name": "REIT",
+          "children": [
+            {
+              "name": "VZ",
+              "value": 1100,
+              "change": 3.5,
+              "url": "https://example.com/vz"
+            },
+            {
+              "name": "V",
+              "value": 700,
+              "change": -7.4,
+              "url": "https://example.com/v"
+            },
+            {
+              "name": "AZ",
+              "value": 1000,
+              "change": -2.1,
+              "url": "https://example.com/vz"
+            },
+            {
+              "name": "SV",
+              "value": 750,
+              "change": -0.6,
+              "url": "https://example.com/v"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
