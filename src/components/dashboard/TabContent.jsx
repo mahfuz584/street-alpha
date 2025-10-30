@@ -47,7 +47,8 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("summary")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "summary"}>
-        {SummaryPanel}
+        {/* {SummaryPanel} */}
+        summary tab is under maintenance.
       </div>
       <input
         type="radio"
@@ -58,7 +59,8 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("latest")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
-        {LatestPanel}
+        {/* {LatestPanel} */}
+        latest tab is under maintenance.
       </div>
 
       <input
@@ -70,7 +72,8 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("forYou")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "forYou"}>
-        {ForYouPanel}
+        {/* {ForYouPanel} */}
+        for you tab is under maintenance.
       </div>
     </div>
   );
