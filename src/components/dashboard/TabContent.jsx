@@ -21,7 +21,6 @@ export default function TabContent({ newsForYou, news, summary, followings, init
   useEffect(() => {
     const t = searchParams.get("tab");
     if (isValid(t) && t !== tab) setTab(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTabChange = (next) => {
@@ -47,8 +46,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("summary")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "summary"}>
-        {/* {SummaryPanel} */}
-        summary tab is under maintenance.
+        {SummaryPanel}
       </div>
       <input
         type="radio"
@@ -59,7 +57,8 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("latest")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
-        {LatestPanel}
+        {/* {LatestPanel} */}
+        latest tab is under maintenance.
       </div>
 
       <input
@@ -71,7 +70,8 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("forYou")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "forYou"}>
-        {ForYouPanel}
+        {/* {ForYouPanel} */}
+        for you panel is disabled for now
       </div>
     </div>
   );
