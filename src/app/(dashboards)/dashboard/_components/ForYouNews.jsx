@@ -80,7 +80,7 @@ const ForYouNews = ({ followings, newsForYou }) => {
 
   return (
     <>
-      <div className="latest-news-container grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-[14px]">
+      {/* <div className="latest-news-container grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-[14px]">
         {flatNewsForYouArray.map((news) => (
           <NewsCard key={news.id || news._id} data={news} />
         ))}
@@ -95,7 +95,20 @@ const ForYouNews = ({ followings, newsForYou }) => {
             {loading ? "Loading..." : "Load More"}
           </button>
         </div>
-      )}
+      )} */}
+      {
+        flatNewsForYouArray.length === 0 ? (
+          <p>No news available for you.</p>
+        ) : (
+          <>
+            <div className="latest-news-container grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-[14px]">
+              {flatNewsForYouArray.map((news) => (  
+                <NewsCard key={news.id || news._id} data={news} />
+              ))}
+            </div>
+          </>
+        )
+      }
     </>
   );
 };

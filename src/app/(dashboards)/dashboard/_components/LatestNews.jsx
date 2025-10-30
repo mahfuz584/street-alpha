@@ -6,44 +6,44 @@ import NewsCard from "../../../../components/dashboard/NewsCard";
 
 const LatestNews = ({ latestNews:initialData }) => {
   const [allNewsData, setAllNewsData] = useState(initialData.data);
-  console.log("🚀 ~ LatestNews ~ allNewsData:", allNewsData)
-  const [loading, setLoading] = useState(false);
-  const [currentOffset, setCurrentOffset] = useState(initialData.data.length);
+  // console.log("🚀 ~ LatestNews ~ allNewsData:", allNewsData)
+  // const [loading, setLoading] = useState(false);
+  // const [currentOffset, setCurrentOffset] = useState(initialData.data.length);
 
-  const quantity = 9;
+  // const quantity = 9;
 
-  const handleLoadMore = async () => {
-    setLoading(true);
+  // const handleLoadMore = async () => {
+  //   setLoading(true);
 
-    try {
-      const response = await axios.get("/api/news", {
-        params: {
-          quantity: quantity,
-          offset: currentOffset,
-        },
-      });
+  //   try {
+  //     const response = await axios.get("/api/news", {
+  //       params: {
+  //         quantity: quantity,
+  //         offset: currentOffset,
+  //       },
+  //     });
 
-      const newData = response.data;
+  //     const newData = response.data;
 
-      setAllNewsData((prev) => {
-        const existingIds = new Set(prev.map((item) => item.id || item._id));
-        const uniqueNewData = newData.filter(
-          (item) => !existingIds.has(item.id || item._id)
-        );
-        return [...prev, ...uniqueNewData];
-      });
+  //     setAllNewsData((prev) => {
+  //       const existingIds = new Set(prev.map((item) => item.id || item._id));
+  //       const uniqueNewData = newData.filter(
+  //         (item) => !existingIds.has(item.id || item._id)
+  //       );
+  //       return [...prev, ...uniqueNewData];
+  //     });
 
-      setCurrentOffset((prev) => prev + quantity);
-    } catch (error) {
-      console.error("Failed to load more news:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     setCurrentOffset((prev) => prev + quantity);
+  //   } catch (error) {
+  //     console.error("Failed to load more news:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <>
-      <div className="latest-news-container grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-[14px] justify-center items-center">
+      {/* <div className="latest-news-container grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-[14px] justify-center items-center">
         {allNewsData?.map((news) => (
           <NewsCard key={news.id || news._id} data={news} />
         ))}
@@ -56,7 +56,20 @@ const LatestNews = ({ latestNews:initialData }) => {
         >
           {loading ? "Loading..." : "Load More"}
         </button>
-      </div>
+      </div> */}
+      <>
+        {
+          allNewsData.length === 0 ? (
+            <p>No latest news available.</p>
+          ) : (
+            <div className="latest-news-container grid grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-[14px] justify-center items-center">
+              {allNewsData?.map((news) => (
+                <NewsCard key={news.id || news._id} data={news} />
+              ))}
+            </div>
+          )
+        }
+      </>
     </>
   );
 };

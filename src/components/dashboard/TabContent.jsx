@@ -35,12 +35,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
   const LatestPanel = useMemo(() => <LatestNews latestNews={news ?? []} />, [news]);
   const ForYouPanel = useMemo(() => <ForYouNews followings={followings ?? []} newsForYou={newsForYou ?? []} />, [followings, newsForYou]);
 
-  console.log({
-    summary : summary?.data ?? [],
-    news : news.data ?? [],
-    newsForYou : newsForYou.data ?? [],
-    followings : followings ?? []
-  })
+
 
   return (
     <div className="tabs tabs-border gap-x-3.5">
