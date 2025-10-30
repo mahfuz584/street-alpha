@@ -32,7 +32,9 @@ export default function TabContent({ newsForYou, news, summary, followings, init
   };
 
   const SummaryPanel = useMemo(() => <TreeMapCanvas data={summary?.data ?? []} />, [summary?.data]);
+  console.log("🚀 ~ TabContent ~ SummaryPanel:", SummaryPanel)
   const LatestPanel = useMemo(() => <LatestNews latestNews={news ?? []} />, [news]);
+  console.log("🚀 ~ TabContent ~ LatestPanel:", LatestPanel)
   const ForYouPanel = useMemo(() => <ForYouNews followings={followings ?? []} newsForYou={newsForYou ?? []} />, [followings, newsForYou]);
 
   return (
@@ -57,7 +59,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("latest")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
-        {LatestPanel}
+        {/* {LatestPanel} */}
         latest tab is under maintenance.
       </div>
 
