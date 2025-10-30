@@ -39,7 +39,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
 
   return (
     <div className="tabs tabs-border gap-x-3.5">
-      <input
+      {/* <input
         type="radio"
         name="my_tabs_2"
         className="tab bg-[#F1F2F4] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
@@ -48,9 +48,9 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("summary")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "summary"}>
-        {/* {SummaryPanel} */}
-      </div>
-      <input
+        {SummaryPanel}
+      </div> */}
+      {/* <input
         type="radio"
         name="my_tabs_2"
         className="tab bg-[#F1F2F4] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
@@ -60,7 +60,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
         {LatestPanel}
-      </div>
+      </div> */}
       <input
         type="radio"
         name="my_tabs_2"
