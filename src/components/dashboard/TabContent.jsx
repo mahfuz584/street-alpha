@@ -59,8 +59,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("latest")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
-        {/* {LatestPanel} */}
-        latest tab is under maintenance.
+        {LatestPanel}
       </div>
 
       <input
@@ -72,8 +71,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("forYou")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "forYou"}>
-        {/* {ForYouPanel} */}
-        for you tab is under maintenance.
+        {ForYouPanel}
       </div>
     </div>
   );
