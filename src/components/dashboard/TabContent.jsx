@@ -1,5 +1,6 @@
 "use client";
 
+import ForYouNews from "@/app/(dashboards)/dashboard/_components/ForYouNews";
 import TreeMapCanvas from "@/app/(dashboards)/dashboard/_components/TreeMapSummary";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -31,7 +32,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
 
   const SummaryPanel = useMemo(() => <TreeMapCanvas data={summary?.data ?? []} />, [summary?.data]);
   // const LatestPanel = useMemo(() => <LatestNews latestNews={news ?? []} />, [news]);
-  // const ForYouPanel = useMemo(() => <ForYouNews followings={followings ?? []} newsForYou={newsForYou ?? []} />, [followings, newsForYou]);
+  const ForYouPanel = useMemo(() => <ForYouNews followings={followings ?? []} newsForYou={newsForYou ?? []} />, [followings, newsForYou]);
 
 
 
@@ -59,6 +60,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
         {LatestPanel}
       </div>
+      
       <input
         type="radio"
         name="my_tabs_2"
@@ -70,6 +72,19 @@ export default function TabContent({ newsForYou, news, summary, followings, init
       <div className="tab-content mt-[30px]" hidden={tab !== "forYou"}>
         {ForYouPanel}
       </div> */}
+
+      <input
+        type="radio"
+        name="my_tabs_2"
+        className="tab bg-[#DEE9FF] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
+        aria-label="For You"
+        checked={tab === "forYou"}
+        onChange={() => handleTabChange("forYou")}
+      />
+      <div className="tab-content mt-[30px]" hidden={tab !== "forYou"}>
+        {ForYouPanel}
+      </div>
+      
     </div>
   );
 }
