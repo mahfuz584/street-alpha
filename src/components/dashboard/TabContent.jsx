@@ -57,7 +57,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("latest")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
-        {/* {LatestPanel} */}
+        {LatestPanel}
         latest tab is under maintenance.
       </div>
 
