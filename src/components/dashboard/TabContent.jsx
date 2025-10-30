@@ -5,6 +5,8 @@ import LatestNews from "@/app/(dashboards)/dashboard/_components/LatestNews";
 import TreeMapCanvas from "@/app/(dashboards)/dashboard/_components/TreeMapSummary";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
+import Latest from "./Latest";
+import NewsTest from "./NewsTest";
 
 const VALID = ["summary", "latest", "forYou"];
 const isValid = (v) => typeof v === "string" && VALID.includes(v);
@@ -59,7 +61,8 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("latest")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
-        {LatestPanel}
+        {/* {LatestPanel} */}
+        <Latest latestNews={news} />
       </div>
 
       <input
@@ -71,7 +74,8 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("forYou")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "forYou"}>
-        {ForYouPanel}
+        {/* {ForYouPanel} */}
+        <NewsTest newsForYou={newsForYou} />
       </div>
     </div>
   );
