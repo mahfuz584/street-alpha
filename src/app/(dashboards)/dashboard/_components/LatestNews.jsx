@@ -6,6 +6,7 @@ import NewsCard from "../../../../components/dashboard/NewsCard";
 
 const LatestNews = ({ latestNews:initialData }) => {
   const [allNewsData, setAllNewsData] = useState(initialData.data);
+  console.log("🚀 ~ LatestNews ~ allNewsData:", allNewsData)
   const [loading, setLoading] = useState(false);
   const [currentOffset, setCurrentOffset] = useState(initialData.data.length);
 

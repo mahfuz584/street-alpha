@@ -25,6 +25,7 @@ const ForYouNews = ({ followings, newsForYou }) => {
     : Object.values(initialData).flat();
 
   const [forYouNewData, setForYouNewsData] = useState(initialFlat);
+  console.log("🚀 ~ ForYouNews ~ forYouNewData:", forYouNewData)
 
   const [offset, setOffset] = useState(3);
   const [loading, setLoading] = useState(false);
