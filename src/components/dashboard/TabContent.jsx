@@ -2,7 +2,7 @@
 
 import ForYouNews from "@/app/(dashboards)/dashboard/_components/ForYouNews";
 import LatestNews from "@/app/(dashboards)/dashboard/_components/LatestNews";
-import TreeMapCanvas from "@/app/(dashboards)/dashboard/_components/TreeMapSummary";
+// import TreeMapCanvas from "@/app/(dashboards)/dashboard/_components/TreeMapSummary";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -31,7 +31,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const SummaryPanel = useMemo(() => <TreeMapCanvas data={summary?.data ?? []} />, [summary?.data]);
+  // const SummaryPanel = useMemo(() => <TreeMapCanvas data={summary?.data ?? []} />, [summary?.data]);
   const LatestPanel = useMemo(() => <LatestNews latestNews={news ?? []} />, [news]);
   const ForYouPanel = useMemo(() => <ForYouNews followings={followings ?? []} newsForYou={newsForYou ?? []} />, [followings, newsForYou]);
 
@@ -48,7 +48,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
         onChange={() => handleTabChange("summary")}
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "summary"}>
-        {SummaryPanel}
+        {/* {SummaryPanel} */}
       </div>
       <input
         type="radio"
@@ -60,9 +60,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
         {LatestPanel}
-
       </div>
-
       <input
         type="radio"
         name="my_tabs_2"
