@@ -1,63 +1,77 @@
 "use client";
 
+import ForYouNews from "@/app/(dashboards)/dashboard/_components/ForYouNews";
+import LatestNews from "@/app/(dashboards)/dashboard/_components/LatestNews";
 import TreeMapCanvas from "@/app/(dashboards)/dashboard/_components/TreeMapSummary";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import ForYouNews from "../../app/(dashboards)/dashboard/_components/ForYouNews";
-import LatestNews from "../../app/(dashboards)/dashboard/_components/LatestNews";
+import { useEffect, useMemo, useRef, useState } from "react";
 
-const TabContent = ({ newsForYou, news, summary, followings }) => {
+const VALID = ["summary", "latest", "forYou"];
+const isValid = (v) => typeof v === "string" && VALID.includes(v);
+
+export default function TabContent({ newsForYou, news, summary, followings, initialTab }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const activeTab = searchParams.get("tab") || "summary";
 
-  const handleTabChange = (tab) => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.set("tab", tab);
-    router.push(`${pathname}?${params.toString()}`);
+  const initialFromUrl = searchParams.get("tab");
+  const initialRef = useRef(isValid(initialTab) ? initialTab : isValid(initialFromUrl) ? initialFromUrl : "summary");
+  const [tab, setTab] = useState(() => initialRef.current);
+
+  useEffect(() => {
+    const t = searchParams.get("tab");
+    if (isValid(t) && t !== tab) setTab(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleTabChange = (next) => {
+    if (!isValid(next) || next === tab) return;
+    setTab(next);
+    const params = new URLSearchParams(window.location.search);
+    params.set("tab", next);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  return (
-    <>
-      <div className="tabs tabs-border gap-x-3.5">
-        <input
-          type="radio"
-          name="my_tabs_2"
-          className="tab bg-[#F1F2F4] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
-          aria-label="Summary"
-          checked={activeTab === "summary"}
-          onChange={() => handleTabChange("summary")}
-        />
-        <div className="tab-content mt-[30px]">
-          {activeTab === "summary" && <TreeMapCanvas data={summary.data} />}
-        </div>
-        <input
-          type="radio"
-          name="my_tabs_2"
-          className="tab bg-[#F1F2F4] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
-          aria-label="Latest News"
-          checked={activeTab === "latest"}
-          onChange={() => handleTabChange("latest")}
-        />
-        <div className="tab-content mt-[30px]">
-          {activeTab === "latest" && <LatestNews latestNews={news} />}
-        </div>
-        <input
-          type="radio"
-          name="my_tabs_2"
-          className="tab bg-[#DEE9FF] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
-          aria-label="For You"
-          checked={activeTab === "forYou"}
-          onChange={() => handleTabChange("forYou")}
-        />
-        <div className="tab-content mt-[30px]">
-          {activeTab === "forYou" && (
-            <ForYouNews followings={followings} newsForYou={newsForYou} />
-          )}
-        </div>
-      </div>
-    </>
-  );
-};
+  const SummaryPanel = useMemo(() => <TreeMapCanvas data={summary?.data ?? []} />, [summary?.data]);
+  const LatestPanel = useMemo(() => <LatestNews latestNews={news ?? []} />, [news]);
+  const ForYouPanel = useMemo(() => <ForYouNews followings={followings ?? []} newsForYou={newsForYou ?? []} />, [followings, newsForYou]);
 
-export default TabContent;
+  return (
+    <div className="tabs tabs-border gap-x-3.5">
+      <input
+        type="radio"
+        name="my_tabs_2"
+        className="tab bg-[#F1F2F4] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
+        aria-label="Summary"
+        checked={tab === "summary"}
+        onChange={() => handleTabChange("summary")}
+      />
+      <div className="tab-content mt-[30px]" hidden={tab !== "summary"}>
+        {SummaryPanel}
+      </div>
+      <input
+        type="radio"
+        name="my_tabs_2"
+        className="tab bg-[#F1F2F4] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
+        aria-label="Latest News"
+        checked={tab === "latest"}
+        onChange={() => handleTabChange("latest")}
+      />
+      <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
+        {LatestPanel}
+      </div>
+
+      <input
+        type="radio"
+        name="my_tabs_2"
+        className="tab bg-[#DEE9FF] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
+        aria-label="For You"
+        checked={tab === "forYou"}
+        onChange={() => handleTabChange("forYou")}
+      />
+      <div className="tab-content mt-[30px]" hidden={tab !== "forYou"}>
+        {ForYouPanel}
+      </div>
+    </div>
+  );
+}

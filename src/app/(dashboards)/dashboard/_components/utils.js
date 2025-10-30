@@ -37,8 +37,6 @@ export const fetchGet = async (
     ? `${base}${url}?${queryString}`
     : `${base}${url}`;
 
-  console.log("Fetching URL:", fullUrl);
-
   try {
     const headers = { "Content-Type": "application/json" };
     if (accessToken) headers.Authorization = `Bearer ${accessToken}`;
@@ -47,7 +45,7 @@ export const fetchGet = async (
     const response = await fetch(fullUrl, {
       method: "GET",
       headers,
-      next: revalidate !== 0 && { revalidate },
+      next: { revalidate },
     });
 
     const text = await response.text();
