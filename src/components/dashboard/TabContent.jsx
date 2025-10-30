@@ -1,8 +1,6 @@
 "use client";
 
-import ForYouNews from "@/app/(dashboards)/dashboard/_components/ForYouNews";
-import LatestNews from "@/app/(dashboards)/dashboard/_components/LatestNews";
-// import TreeMapCanvas from "@/app/(dashboards)/dashboard/_components/TreeMapSummary";
+import TreeMapCanvas from "@/app/(dashboards)/dashboard/_components/TreeMapSummary";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -31,15 +29,15 @@ export default function TabContent({ newsForYou, news, summary, followings, init
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  // const SummaryPanel = useMemo(() => <TreeMapCanvas data={summary?.data ?? []} />, [summary?.data]);
-  const LatestPanel = useMemo(() => <LatestNews latestNews={news ?? []} />, [news]);
-  const ForYouPanel = useMemo(() => <ForYouNews followings={followings ?? []} newsForYou={newsForYou ?? []} />, [followings, newsForYou]);
+  const SummaryPanel = useMemo(() => <TreeMapCanvas data={summary?.data ?? []} />, [summary?.data]);
+  // const LatestPanel = useMemo(() => <LatestNews latestNews={news ?? []} />, [news]);
+  // const ForYouPanel = useMemo(() => <ForYouNews followings={followings ?? []} newsForYou={newsForYou ?? []} />, [followings, newsForYou]);
 
 
 
   return (
     <div className="tabs tabs-border gap-x-3.5">
-      {/* <input
+      <input
         type="radio"
         name="my_tabs_2"
         className="tab bg-[#F1F2F4] py-[7px] !rounded-[33px] !text-[14px] !text-[#070707] tracking-normal xl:tracking-[-0.42px]"
@@ -49,7 +47,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "summary"}>
         {SummaryPanel}
-      </div> */}
+      </div>
       {/* <input
         type="radio"
         name="my_tabs_2"
@@ -60,7 +58,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "latest"}>
         {LatestPanel}
-      </div> */}
+      </div>
       <input
         type="radio"
         name="my_tabs_2"
@@ -71,7 +69,7 @@ export default function TabContent({ newsForYou, news, summary, followings, init
       />
       <div className="tab-content mt-[30px]" hidden={tab !== "forYou"}>
         {ForYouPanel}
-      </div>
+      </div> */}
     </div>
   );
 }
